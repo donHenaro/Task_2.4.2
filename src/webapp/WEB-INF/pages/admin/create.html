@@ -32,10 +32,6 @@
                 <label for="roles">Выберите роли:</label>
             </td>
             <td>
-                <!--                <select class="form-control" multiple name="listRoles" id="roles" size="2">-->
-                <!--                    <option name="ROLE_USER" value="ROLE_USER">USER</option>-->
-                <!--                    <option selected name="ROLE_ADMIN" value="ROLE_ADMIN">ADMIN</option>-->
-                <!--                </select>-->
                 <select th:object="${roles}" size="2" name="listRoles" id="roles" multiple>
                     <div th:each="role : ${roles}">
                         <option th:value="${role.getRoleName()}" th:text="${role.getRoleName()}"></option>
@@ -47,6 +43,6 @@
     </table>
     <p><input type="submit" value="Создать"></p>
 </form>
-
+<p><form action="/admin/admin"><input type="submit" value="Отмена"></form></p>
 </body>
 </html>
