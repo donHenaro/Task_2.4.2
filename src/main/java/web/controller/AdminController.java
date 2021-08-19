@@ -69,13 +69,8 @@ public class AdminController {
 
     @PostMapping("/update")
     public String updateUser(User user,
-                             @RequestParam(required = false, name = "listRoles") String[] arrRoles,
-                             @RequestParam(required = false, name = "pass") String pass) {
-        System.out.println("пароль" + pass);
-        System.out.println("роли " + Arrays.toString(arrRoles));
-        if(pass != null) {
-            user.setPassword(pass);
-        }
+                             @RequestParam(required = false, name = "listRoles") String[] arrRoles) {
+
         if(arrRoles != null){
             user.setRoles(rs.getRolesByName(arrRoles));
         }
