@@ -64,7 +64,11 @@ public class AdminController {
 
     @PostMapping("/update")
     public String updateUser(User user,
-                             @RequestParam(required = false, name = "listRoles") String[] arrRoles) {
+                             @RequestParam(required = false, name = "listRoles") String[] arrRoles,
+                             @RequestParam(required = false, name = "pass") String pass) {
+        if(pass.length()>0) {
+            user.setPassword(pass);
+        }
         user.setRoles(rs.getRolesByName(arrRoles));
         us.update(user);
         return "redirect:/admin/admin";

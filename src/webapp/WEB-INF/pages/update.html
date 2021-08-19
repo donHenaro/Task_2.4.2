@@ -27,8 +27,8 @@
             <td><input type="text" th:field="*{email}" id="email"></td>
         </tr>
         <tr>
-            <td><label for="password">Пароль</label></td>
-            <td><input type="text" th:field="*{password}" id="password" placeholder="введите pwd"></td>
+            <td><label for="passNew">Пароль</label></td>
+            <td><input id="passNew" type="password" th:name="pass" ></td>
         </tr>
         <tr>
             <td>
@@ -37,7 +37,7 @@
             <td>
                 <select th:object="${roles}" size="2" name="listRoles" id="roles" multiple>
                     <div th:each="role : ${roles}">
-                        <option th:value="${role.getRoleName()}" th:text="${role.getRoleName()}"></option>
+                        <option th:value="${role.getRoleName()}" th:text="${role.getRoleName().substring(5)}"></option>
                     </div>
                 </select>
             </td>
