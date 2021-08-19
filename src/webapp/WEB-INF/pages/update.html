@@ -39,7 +39,8 @@
                     <div th:each="role : ${roles}">
                         <option th:value="${role.getRoleName()}"
                                 th:text="${role.getRoleName().substring(5)}"
-                                th:selected="${user.getRoles().contains(role)}"></option>
+                                th:selected="${user.getRoles().contains(role)}">
+                        </option>
                     </div>
                 </select>
             </td>

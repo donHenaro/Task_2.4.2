@@ -67,6 +67,7 @@ public class HibernateConfig {
         prop.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
         prop.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         prop.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
+        prop.put("hibernate.enable_lazy_load_no_trans", env.getProperty("hibernate.enable_lazy_load_no_trans"));
         return prop;
     }
 }
