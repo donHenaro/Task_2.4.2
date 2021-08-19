@@ -4,9 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import web.model.User;
 import web.service.RoleService;
 import web.service.UserService;
+
+import java.util.Arrays;
 
 
 @Controller
@@ -44,7 +47,9 @@ public class AdminController {
     @PostMapping("/admin/create")
     public String createUserPost(@ModelAttribute("user") User user,
                                  @RequestParam(required = false, name = "listRoles") String[] arrRoles) {
-        user.setRoles(rs.getRolesByName(arrRoles));
+        if(arrRoles != null){
+            user.setRoles(rs.getRolesByName(arrRoles));
+        }
         us.create(user);
         return "redirect:/admin/admin";
     }
@@ -66,10 +71,14 @@ public class AdminController {
     public String updateUser(User user,
                              @RequestParam(required = false, name = "listRoles") String[] arrRoles,
                              @RequestParam(required = false, name = "pass") String pass) {
-        if(pass.length()>0) {
+        System.out.println("пароль" + pass);
+        System.out.println("роли " + Arrays.toString(arrRoles));
+        if(pass != null) {
             user.setPassword(pass);
         }
-        user.setRoles(rs.getRolesByName(arrRoles));
+        if(arrRoles != null){
+            user.setRoles(rs.getRolesByName(arrRoles));
+        }
         us.update(user);
         return "redirect:/admin/admin";
     }
